@@ -54,6 +54,14 @@
       color: white;
     }
 
+    table th:nth-child(2),
+    table td:nth-child(2) {
+      width: 250px; /* adjust width as needed */
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
     @media (max-width: 600px) {
       body {
         margin: 0 5px;
@@ -62,6 +70,13 @@
       table {
         font-size: 12px;
       }
+
+      table th:nth-child(2),
+      table td:nth-child(2) {
+        white-space: normal;
+        width: auto;
+      }
+      
     }
   </style>
 </head>
