@@ -4,12 +4,18 @@
   <title>CLUBZONE Leaderboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
+    /* Ensure padding doesn't cause overflow */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Segoe UI', sans-serif;
       background-color: #0a192f;
       color: white;
-      margin: 0;
-      margin-left: 10px;
+      margin: 0 10px;  /* symmetric left and right margin */
       padding: 20px;
     }
     h1 {
@@ -18,9 +24,15 @@
       margin-bottom: 20px;
     }
     h4 {
-        text-align: center;
-        font-size: 10px;
+      text-align: center;
+      font-size: 10px;
     }
+
+    /* Wrapper for horizontal scroll on small screens */
+    .table-container {
+      overflow-x: auto;
+    }
+
     table {
       width: 100%;
       max-width: 100%;
@@ -29,6 +41,8 @@
       color: black;
       border-radius: 8px;
       overflow: hidden;
+      table-layout: fixed; /* optional for better column behavior */
+      word-wrap: break-word;
     }
     th, td {
       padding: 12px 8px;
@@ -39,7 +53,12 @@
       background-color: #87ceeb;
       color: white;
     }
+
     @media (max-width: 600px) {
+      body {
+        margin: 0 5px;
+        padding: 10px;
+      }
       table {
         font-size: 12px;
       }
@@ -49,11 +68,12 @@
 <body>
   <h1>Clubzone Leaderboard 🏆</h1>
   <h4>For more details DM @tournament_kottayam instagram page</h4>
-  <table id="leaderboard"></table>
+
+  <div class="table-container">
+    <table id="leaderboard"></table>
+  </div>
 
   <script>
-
-
     const url = '/api/leaderboard';
 
     fetch(url)
