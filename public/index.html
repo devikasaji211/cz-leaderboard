@@ -4,10 +4,7 @@
   <title>CLUBZONE Leaderboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    /* Ensure padding doesn't cause overflow */
-    *,
-    *::before,
-    *::after {
+    * {
       box-sizing: border-box;
     }
 
@@ -15,51 +12,51 @@
       font-family: 'Segoe UI', sans-serif;
       background-color: #0a192f;
       color: white;
-      margin: 0 10px;  /* symmetric left and right margin */
-      padding: 20px;
+      margin: 0 10px;
+      padding: 20px 20px 20px 20px;
     }
+
     h1 {
       text-align: center;
       color: #fff;
       margin-bottom: 20px;
     }
+
     h4 {
       text-align: center;
       font-size: 10px;
     }
 
-    /* Wrapper for horizontal scroll on small screens */
     .table-container {
       overflow-x: auto;
     }
 
     table {
       width: 100%;
-      max-width: 100%;
       border-collapse: collapse;
       background: white;
       color: black;
       border-radius: 8px;
       overflow: hidden;
-      table-layout: fixed; /* optional for better column behavior */
-      word-wrap: break-word;
+      table-layout: auto; /* allow flexible columns */
     }
+
     th, td {
       padding: 12px 8px;
       text-align: center;
       border: 1px solid #ddd;
     }
+
     th {
       background-color: #87ceeb;
       color: white;
     }
 
-    table th:nth-child(2),
-    table td:nth-child(2) {
-      width: 250px; /* adjust width as needed */
+    /* Widen second column and prevent text wrap */
+    td:nth-child(2),
+    th:nth-child(2) {
+      width: 200px;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     @media (max-width: 600px) {
@@ -67,16 +64,16 @@
         margin: 0 5px;
         padding: 10px;
       }
+
       table {
         font-size: 12px;
       }
 
-      table th:nth-child(2),
-      table td:nth-child(2) {
-        white-space: normal;
-        width: auto;
+      td:nth-child(2),
+      th:nth-child(2) {
+        width: 250px; /* even wider for mobile */
+        white-space: nowrap;
       }
-      
     }
   </style>
 </head>
